@@ -1,12 +1,13 @@
+/* --- Layout Principal --- */
 section {
+    margin-left: 15%;
+    background-color: var(--verde-7);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    /* Isso depende do pai para funcionar corretamente */
+    width: 70%;
     border-radius: 64px;
     gap: 8rem;
     padding: 2rem;
@@ -14,7 +15,6 @@ section {
 
 .menu-direito {
     background-color: var(--verde-7);
-    box-shadow: 0px 0px 10px var(--shadow-0);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -25,6 +25,7 @@ section {
     gap: 10px;
 }
 
+/* --- Cartões --- */
 .card {
     min-width: 400px;
     border-radius: 16px;
@@ -51,38 +52,23 @@ section {
     font-size: 0.7rem;
 }
 
-.descricao-marquee {
-    width: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-    box-sizing: border-box;
-    height: 1rem;
+#card-diaria,
+#card-semanal,
+#card-conquistas {
+    height: auto;
+    margin: 0;
+    gap: 3px;
+    width: 400px;
 }
 
-#descricao {
-    position: relative;
-    top: -0px;
-    overflow: hidden;
-    width: 100%;
+#card-conquistas {
+    height: 120px;
 }
 
-.marquee-ativo #descricao:hover {
-    animation: marquee 10s linear infinite;
-}
-
-@keyframes marquee {
-    0% {
-        transform: translateX(0%);
-    }
-
-    100% {
-        transform: translateX(-100%);
-    }
-}
-
+/* --- Ícones e Estilos Gerais --- */
 .icon-card,
 .icon-card-intra,
-.icon-card-no-background{
+.icon-card-no-background {
     font-size: 1rem;
     border-radius: 12px;
     border-style: solid;
@@ -107,6 +93,7 @@ section {
     border-color: transparent;
 }
 
+/* --- Container Interno dos Cartões (Intra-container) --- */
 .intra-container {
     background-color: var(--verde-6);
     box-shadow: 2px 2px 0px var(--shadow-0);
@@ -116,11 +103,16 @@ section {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border: solid 1px transparent;
 }
 
 .intra-container .text p {
     font-size: 0.9rem;
     margin-bottom: 0.4rem;
+}
+
+.completa {
+    border: solid 1px var(--verde-3);
 }
 
 .text {
@@ -131,65 +123,95 @@ section {
     width: 80%;
 }
 
-.text .barra-progresso {
-    background-color: var(--verde-7);
-    border: 1px solid var(--verde-7);
-    height: 0.5rem;
-}
-
-.text .barra-progresso-atual {
-    width: 10%;
-}
-
 .text-icon {
     display: flex;
     width: 75%;
     overflow: hidden;
 }
 
-.completar-botao {
+.xp-missao {
+    margin-right: 5px;
+    font-size: 0.8rem;
+    color: var(--verde-2);
+    font-weight: 600;
+}
+
+/* --- Botão Completar Missão --- */
+.completar-btn {
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     margin-left: 0.2rem;
-    color: #08241f;
-    font-size: 0.8rem;
     color: #176b5d;
     background-color: #7dd1c3;
     border: 8px solid #7dd1c3;
     border-radius: 64px;
+    font-size: 0.8rem;
 }
 
-#card-diaria,
-#card-semanal,
-#card-conquistas {
-    height: auto;
-    margin: 0px;
-    gap: 3px;
+/* --- Marquee (Rolagem de Texto) --- */
+.descricao-marquee {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    box-sizing: border-box;
+    height: 1rem;
 }
 
-#card-conquistas {
-    height: 120px;
+#descricao {
+    position: relative;
+    top: 0px;
+    /* Alterado de -0px para 0px para clareza */
+    overflow: hidden;
+    width: 100%;
 }
 
-#card-stats {
+.marquee-ativo #descricao:hover {
+    animation: marquee 10s linear infinite;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0%);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* --- Barra de Progresso --- */
+.barra-progresso {
+    width: 100%;
+    height: 1.2rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 410px;
-    padding: 0.5rem 1rem;
-    color: #10473e;
-    flex-direction: column;
-    margin-bottom: 1rem;
+    border: 2px solid var(--verde-5);
+    border-radius: 999px;
+    background-color: var(--verde-4);
+    overflow: hidden;
+    position: relative;
 }
 
-#card-stats .barra-progresso, #regar-btn {
-    box-shadow: 3px 3px var(--shadow-0);
+.planta-img .barra-progresso {
+    width: 350px;
+    height: 30px;
+    border: 2px solid var(--verde-4);
+    border-radius: 999px;
+    background-color: var(--verde-3);
 }
 
-#card-stats #nivel-atual {
-    text-shadow: 3px 3px var(--shadow-0);
+.barra-progresso-atual {
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 87.5%;
+    /* Exemplo de largura para preenchimento */
+    border: 1px solid var(--verde-2);
+    border-radius: 999px;
+    background-color: var(--verde-2);
 }
 
 #barra-progresso-container {
@@ -206,7 +228,7 @@ section {
     font-size: 0.8rem;
     height: 1.2rem;
     position: absolute;
-    color: var(--verde-2);
+    color: var(--verde-5);
     font-weight: 600;
 }
 
@@ -218,39 +240,40 @@ section {
     font-weight: 600;
 }
 
-
-.barra-progresso {
-    width: 100%;
-    height: 1.2rem;
+.botoes {
+    display: flex;
+    gap: 2rem;
+}
+/* --- Stats da Planta --- */
+#card-stats {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid var(--verde-5);
-    border-radius: 999px;
-    background-color: var(--verde-4);
-    overflow: hidden;
-    position: relative;
+    width: 410px;
+    padding: 0.5rem 1rem;
+    color: #10473e;
+    flex-direction: column;
 }
 
-.barra-progresso-atual {
-    position: absolute;
-    left: 0;
-    height: 100%;
-    width: 87.5%;
-    border: 1px solid var(--verde-5);
-    border-radius: 999px;
-    background-color: var(--verde-5);
+#card-stats .barra-progresso,
+#regar-btn {
+    box-shadow: 3px 3px var(--shadow-0);
+}
+
+#card-stats #nivel-atual {
+    text-shadow: 3px 3px var(--shadow-0);
 }
 
 #nivel-atual {
     color: var(--verde-2);
-    font-size: 0.8rem;
-    font-weight: 600;
+    font-size: 1.5rem;
+    font-weight: 800;
 }
 
-#nivel-planta {
-    color: var(--verde-2);
-    font-weight: 600;
+/* --- Nome da Planta --- */
+#nome-planta {
+    color: var(--verde-00);
+    font-weight: 800;
     width: auto;
     font-size: 2rem;
     border-radius: 16px;
@@ -258,24 +281,99 @@ section {
     align-items: center;
     justify-content: center;
     text-shadow: 3px 3px var(--shadow-0);
+    gap: 1rem;
+}
+
+#nome-planta button {
+    all: unset;
+    margin: 0;
+    border: 0;
+}
+
+#nome-planta i {
+    cursor: pointer;
+    color: var(--verde-7);
+    background-color: var(--verde-00);
+    border: solid 0.5rem var(--verde-00);
+    border-radius: 999px;
+    font-size: 0.6rem;
+    opacity: 0.6;
+}
+
+/* --- Container da Imagem da Planta --- */
+.planta-container {
+    height: 100%;
+    display: flex;
+}
+
+.planta-img {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    /* Pode ser ajustado se causar problemas com height fixo */
+    width: 600px;
+    /* Largura definida para 600px */
+    flex-shrink: 0;
+    /* Impede que o elemento encolha abaixo de 600px */
+    padding: 2rem;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0px 0px 10px var(--shadow-0);
+    overflow: hidden;
+    background-image: url("src/assets/imgs/estacao-vital/blank-nature-park-landscape-scene-daytime_1308-62625.jpg");
+    border-radius: 32px;
+    border: 10px solid var(--verde-5);
+}
+
+/* --- Botão Regar Planta (Círculo) --- */
+.circle-button {
+    width: 240px;
+    height: 80px;
+    border-radius: 32px;
+    background: linear-gradient(135deg, var(--verde-3), var(--verde-5));
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--verde-00);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.circle-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.circle-button i {
+    font-size: 24px;
+    margin-bottom: 8px;
 }
 
 #regar-btn {
+    /* Substituído por .circle-button, mas mantido caso haja uso específico */
     background: linear-gradient(90deg, var(--gradiente-inicio), var(--gradiente-fim));
     color: var(--verde-7);
     font-size: 1.5rem;
     font-weight: 500;
-    padding: 0.25rem 2rem;
-    border-radius: 64px;
+    border-radius: 32px;
     transition: all 0.3s ease;
     border: none;
     cursor: pointer;
-    display: inline-block;
+    display: flex;
     align-items: center;
     justify-content: center;
     font-family: "Poppins", sans-serif;
     text-decoration: none;
-    height: 50px;
+    height: 200px;
+    width: 400px;
 }
 
 #regar-btn:hover {
@@ -288,32 +386,41 @@ section {
     box-shadow: 0 1px 3px var(--shadow-0);
 }
 
-.planta-menu {
+.bottom-container {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    position: absolute;
+    bottom: -275px;
+    width: 1530px;
+    height: 600px;
+    border-radius: 100%;
+    background-color: var(--verde-5);
+    z-index: 0;
     align-items: center;
-    height: 100%;
-    padding: 2rem;
-    border-radius: 16px;
-    background-image: url("src/assets/imgs/estacao-vital/blank-nature-park-landscape-scene-daytime_1308-62625.jpg");
-    background-size: cover;
-    background-position: center;
-    box-shadow: 0px 0px 10px var(--shadow-0);
-    border: 4px solid var(--verde-6);
+    padding: 25px 0;
+    gap: 0.2rem;
 }
 
-.planta-menu h1 {
-    color: var(--verde-2);
+.voltar-btn {}
+
+.planta-img h1 {
+    color: var(--verde-7);
     font-size: 2rem;
-    border: 2px solid var(--verde-10);
-    padding: 0 15px;
-    background-color: var(--verde-10);
-    border-radius: 64px;
-    box-shadow: 3px 3px var(--shadow-0);
 }
 
-.planta-menu img {
-    width: 400px;
-    height: 400px;
+.planta-img img {
+    width: 470px;
+    height: 470px;
+}
+
+.flower-shadow {
+    position: absolute;
+    margin-right: 3px;
+    top: 61.5%;
+    z-index: 4;
+    background-color: var(--verde-7);
+    width: 180px;
+    height: 15px;
+    border-radius: 100%;
+    opacity: 70%;
 }
