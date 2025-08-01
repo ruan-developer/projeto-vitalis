@@ -36,9 +36,9 @@ FROM nginx:alpine
 # !! IMPORTANTE !!
 # Verifique no seu angular.json (em outputPath) se o nome da pasta
 # que o build gera é 'dist/vitalis'. Se for diferente, ajuste o caminho abaixo.
-COPY --from=build /app/dist/vitalis /usr/share/nginx/html
+COPY --from=build /app/dist/vitalis/usr/share/nginx/html
 
-# Copia uma configuração customizada para o Nginx (ver Passo 3)
+# Copia uma configuração customizada para o Nginx 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Expõe a porta 80, que é a porta padrão do Nginx que o Railway irá usar.
