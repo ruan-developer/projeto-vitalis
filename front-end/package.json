@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node server.js",
+    "start": "ng serve",
     "build": "npm run sitemap && ng build",
-    "sitemap": "node generate-sitemap.js",
+    "sitemap": "nnode generate-sitemap.js",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
