@@ -74,7 +74,15 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes), FormsModule], // Importando FormsModule para uso em componentes que necessitam de formulários
-  exports: [RouterModule, FormsModule] // Exportando RouterModule e FormsModule para uso em outros módulos
+  // ✅ ADICIONE A CONFIGURAÇÃO DE VOLTA AQUI
+  imports: [
+    RouterModule.forRoot(routes, {
+      anchorScrolling: 'enabled',
+      scrollOffset: [0, 10], // Define um espaço de 80px no topo ao rolar para âncoras
+      scrollPositionRestoration: 'enabled',
+    }),
+    FormsModule,
+  ],
+  exports: [RouterModule, FormsModule]
 })
 export class AppRoutingModule {}
